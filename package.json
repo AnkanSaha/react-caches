@@ -1,0 +1,13 @@
+{
+  "name": "react-caches",
+  "version": "1.0.4",
+  "description": "react-caches is a open source project for simplify your localstorage systems",
+  "main": "storage.js",
+  "repository": "https://",
+  "author": "Ankan Saha",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
