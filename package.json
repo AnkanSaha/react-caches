@@ -1,12 +1,34 @@
 {
   "name": "react-caches",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React Caches is a lightweight and easy-to-use package that simplifies the management of local storage and cache storage in your React-based applications. With this package, you can easily access and manage data stored in local storage, cache storage, and other local storage used by JavaScript. It provides a convenient interface to store and retrieve data, making it seamless to work with client-side storage in your React projects.",
-  "main": "storage.js",
-  "repository": "https://",
+  "main": "./lib/Storage.js",
+  "repository": "https://github.com/AnkanSaha/react-caches.git",
+  "types": "./lib/Storage.d.ts",
   "author": "Ankan Saha",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "test": "eslint ./source/**/*.{ts,tsx} --fix",
+    "build": "yarn test && tsc",
+    "prepare": "yarn build"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-hooks",
+    "react-component",
+    "react-caches",
+    "react-cache",
+    "react-cache-storage",
+    "react-cache-manager"
+  ],
+  "displayName": "react-caches",
+  "funding": {
+    "type": "git",
+    "url": "https://github.com/sponsors/AnkanSaha"
+  },
+  "readme": "README.md",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": ">=6.0.0",
     "@typescript-eslint/parser": ">=6.0.0",
