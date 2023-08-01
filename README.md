@@ -28,4 +28,18 @@ npm install react-caches@latest
 
 # Usage
 
+# # Cache Storage
 
+To use the cache storage features, import the CacheStorage Related Functions from the package:
+
+```js
+import { CacheStorage } from 'react-caches'; // Import Main CacheStorage Object
+
+const {receiveCache, saveCacheData, deleteCache} = CacheStorage; // Import all CacheStorage functions
+
+const Data = await receiveCache('DatabaseName', 'Searchkey'); // Receive Cache Data from Cache Storage by Database Name and Search Key
+
+const Response = await saveCacheData('DatabaseName', 'Searchkey', Data); // Save Cache Data to Cache Storage by Database Name and Search Key
+
+const Response = await deleteCache('DatabaseName', 'Searchkey'); // Delete Cache Data from Cache Storage by Database Name and Search Key
+```
