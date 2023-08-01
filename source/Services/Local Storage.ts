@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 // global Types
 type str = string;
+type int = number;
+
+// Import Status Codes
+import StatusCodes from '../Helper/StatusCodes';
 
 /**
  * The function saves data to the local storage using a specified key name.
@@ -13,6 +17,7 @@ export function saveLocalStorage(KeyName: str, data: unknown) {
 	localStorage.setItem(KeyName, JSON.stringify(data));
 	return {
 		status: true,
+		Code: StatusCodes.CREATED,
 		message: 'Data saved successfully',
 		StorageName: 'Local Storage',
 	};
@@ -20,6 +25,7 @@ export function saveLocalStorage(KeyName: str, data: unknown) {
 
 type ReturnType = {
 	status: boolean;
+	Code: int;
 	message: str;
 	StorageName: str;
 	Localdata: unknown;
@@ -36,6 +42,7 @@ export function getLocalStorage(KeyName: str) {
 	const data = localStorage.getItem(KeyName);
 	const Response: ReturnType = {
 		status: true,
+		Code: StatusCodes.OK,
 		message: 'Data retrieved successfully',
 		StorageName: 'Local Storage',
 		Localdata: JSON.parse(data ? data : 'null'),
@@ -56,6 +63,7 @@ export function removeLocalStorage(KeyName: str) {
 	localStorage.removeItem(KeyName);
 	return {
 		status: true,
+		Code: StatusCodes.ACCEPTED,
 		message: 'Data removed successfully',
 		StorageName: 'Local Storage',
 	};
@@ -77,6 +85,7 @@ export function updateLocalStorage(KeyName: str, data: unknown) {
 	localStorage.setItem(KeyName, JSON.stringify(data));
 	return {
 		status: true,
+		Code: StatusCodes.ACCEPTED,
 		message: 'Data updated successfully',
 		StorageName: 'Local Storage',
 	};
@@ -94,6 +103,7 @@ export function clearLocalStorage() {
 	localStorage.clear();
 	return {
 		status: true,
+		Code: StatusCodes.ACCEPTED,
 		message: 'Local Storage cleared successfully',
 		StorageName: 'Local Storage',
 	};
