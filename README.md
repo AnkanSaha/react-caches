@@ -42,4 +42,8 @@ const Data = await receiveCache('DatabaseName', 'Searchkey'); // Receive Cache D
 const Response = await saveCacheData('DatabaseName', 'Searchkey', Data); // Save Cache Data to Cache Storage by Database Name and Search Key
 
 const Response = await deleteCache('DatabaseName', 'Searchkey'); // Delete Cache Data from Cache Storage by Database Name and Search Key
+
+const Response = await updateCache('DatabaseName', 'Searchkey', Data); // Update Cache Data in Cache Storage by Database Name and Search Key
+
+const Response = await clearCache('DatabaseName'); // Clear Cache Data from Cache Storage by Database Name
 ```

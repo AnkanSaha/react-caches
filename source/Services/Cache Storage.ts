@@ -25,11 +25,13 @@ export async function saveCache(DatabaseName: str, Searchkey: str, MainData: unk
 		return {
 			status: true,
 			message: 'Cache Saved Successfully',
+			StorageName: 'Cache Storage',
 		};
 	} catch {
 		return {
 			status: false,
 			message: 'Unable to save cache',
+			StorageName: 'Cache Storage',
 		};
 	}
 }
@@ -59,11 +61,13 @@ export const GetCache = async (Database: str, Searchkey: str) => {
 			status: true,
 			message: 'Cache Retrieved Successfully',
 			data: CacheDataJSON,
+			StorageName: 'Cache Storage',
 		};
 	} catch {
 		return {
 			status: false,
 			message: 'Unable to get cache',
+			StorageName: 'Cache Storage',
 		};
 	}
 };
@@ -86,11 +90,55 @@ export const DeleteCache = async (Database: str, Searchkey: str) => {
 		return {
 			status: true,
 			message: 'Cache Deleted Successfully',
+			StorageName: 'Cache Storage',
 		};
 	} catch {
 		return {
 			status: false,
 			message: 'Unable to delete cache',
+			StorageName: 'Cache Storage',
+		};
+	}
+};
+
+/**
+ * The function updates the cache in a database with the provided search key and main data.
+ * @param {str} Database - The `Database` parameter is a string that represents the name or identifier
+ * of the database where the cache will be stored.
+ * @param {str} Searchkey - The `Searchkey` parameter is a string that represents the key used to
+ * search for data in the cache. It is used to identify the specific data that needs to be updated in
+ * the cache.
+ * @param {unknown} MainData - The MainData parameter is of type unknown, which means it can be any
+ * type of data. It is the data that you want to save in the cache.
+ * @returns the result of the `saveCache` function.
+ */
+export async function updateCache(Database: str, Searchkey: str, MainData: unknown) {
+	return saveCache(Database, Searchkey, MainData);
+}
+
+/**
+ * The function `clearCache` clears the cache storage by deleting all keys in the specified database.
+ * @param {str} Database - The `Database` parameter is a string that represents the name of the cache
+ * storage that you want to clear.
+ * @returns The function `clearCache` returns an object with the following properties:
+ */
+export const clearCache = async (Database: str) => {
+	try {
+		const CacheDB = await caches.open(Database);
+		const keys = await CacheDB.keys();
+		keys.forEach(key => {
+			void CacheDB.delete(key);
+		});
+		return {
+			status: true,
+			message: 'Cache Cleared Successfully',
+			StorageName: 'Cache Storage',
+		};
+	} catch {
+		return {
+			status: false,
+			message: 'Unable to clear cache',
+			StorageName: 'Cache Storage',
 		};
 	}
 };
