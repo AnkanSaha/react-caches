@@ -1,6 +1,9 @@
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
+// Import Status Codes
+import StatusCodes from '../Helper/StatusCodes'; // Import Status Codes
+
 // Global types
 type str = string;
 
@@ -24,12 +27,14 @@ export async function saveCache(DatabaseName: str, Searchkey: str, MainData: unk
 		await cacheDB.put(Searchkey, new Response(JSON.stringify(MainData)));
 		return {
 			status: true,
+			Code: StatusCodes.CREATED,
 			message: 'Cache Saved Successfully',
 			StorageName: 'Cache Storage',
 		};
 	} catch {
 		return {
 			status: false,
+			Code: StatusCodes.INTERNAL_SERVER_ERROR,
 			message: 'Unable to save cache',
 			StorageName: 'Cache Storage',
 		};
@@ -59,6 +64,7 @@ export const GetCache = async (Database: str, Searchkey: str) => {
 		const CacheDataJSON: unknown = await CacheData?.json();
 		return {
 			status: true,
+			Code: StatusCodes.OK,
 			message: 'Cache Retrieved Successfully',
 			data: CacheDataJSON,
 			StorageName: 'Cache Storage',
@@ -66,6 +72,7 @@ export const GetCache = async (Database: str, Searchkey: str) => {
 	} catch {
 		return {
 			status: false,
+			Code: StatusCodes.INTERNAL_SERVER_ERROR,
 			message: 'Unable to get cache',
 			StorageName: 'Cache Storage',
 		};
@@ -89,12 +96,14 @@ export const DeleteCache = async (Database: str, Searchkey: str) => {
 		await CacheDB.delete(Searchkey);
 		return {
 			status: true,
+			Code: StatusCodes.ACCEPTED,
 			message: 'Cache Deleted Successfully',
 			StorageName: 'Cache Storage',
 		};
 	} catch {
 		return {
 			status: false,
+			Code: StatusCodes.INTERNAL_SERVER_ERROR,
 			message: 'Unable to delete cache',
 			StorageName: 'Cache Storage',
 		};
@@ -131,12 +140,14 @@ export const clearCache = async (Database: str) => {
 		});
 		return {
 			status: true,
+			Code: StatusCodes.ACCEPTED,
 			message: 'Cache Cleared Successfully',
 			StorageName: 'Cache Storage',
 		};
 	} catch {
 		return {
 			status: false,
+			Code: StatusCodes.INTERNAL_SERVER_ERROR,
 			message: 'Unable to clear cache',
 			StorageName: 'Cache Storage',
 		};
