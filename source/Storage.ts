@@ -9,6 +9,9 @@ import {clearLocalStorage, getLocalStorage, removeLocalStorage, saveLocalStorage
 // Import All Session Storage Functions
 import {clearSession, getSession, removeSession, saveSession, updateSession} from './Services/Session Storage'; // Import All Session Storage Functions
 
+// Import IndexedDB Functions
+import IndexedDB_Storage from './Services/IndexedDB'; // Import IndexedDB Class
+
 // Export Cache Storage Functions
 /* The code is exporting an object named `CacheStorage` which contains several functions related to
 cache storage. Each function is assigned a corresponding function from the `./Services/Cache
@@ -48,3 +51,5 @@ export const SessionStorage = {
 	clearSessionData: clearSession,
 	updateSessionData: updateSession,
 };
+
+export const IndexedDB = IndexedDB_Storage; // Export IndexedDB Class
