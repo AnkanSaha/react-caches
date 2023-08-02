@@ -87,3 +87,21 @@ const Response = updateSessionData('Searchkey', Data); // Update Session Storage
 
 const Response = clearSessionData(); // Clear Session Storage Data from Session Storage
 ```
+
+# IndexedDB
+
+To use the IndexedDB features, import the IndexedDB Related Functions from the package, Remember that IndexedDB is an object-oriented database, so you need to create a database and object store before using it:
+
+```js
+import { IndexedDB } from 'react-caches'; // Import Main IndexedDB Object
+
+const {createData, readData, updateData, deleteData} = new IndexedDB('DatabaseName', 'Database Version' 'ObjectStoreName'); // Create a new IndexedDB Database and Object Store with Database Name, Database Version and Object Store Name
+
+const Response = await createData('Searchkey', Data); // Create Data in IndexedDB by Search Key
+
+const Data = await readData('Searchkey'); // Read Data from IndexedDB by Search Key
+
+const Response = await updateData('Searchkey', Data); // Update Data in IndexedDB by Search Key
+
+const Response = await deleteData('Searchkey'); // Delete Data from IndexedDB by Search Key
+```
