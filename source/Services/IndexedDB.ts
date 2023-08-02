@@ -15,6 +15,8 @@ type str = string;
 type int = number;
 
 // Function to save data in IndexedDB
+/* The IndexedDB class is a TypeScript class that provides methods for performing CRUD operations on an
+IndexedDB database. */
 export default class IndexedDB {
 	private readonly databaseName: str;
 	private readonly dbVersion: int;
@@ -29,6 +31,13 @@ export default class IndexedDB {
 		this.openDatabase();
 	}
 
+	/**
+ * The function `deleteData` deletes a data entry from an IndexedDB object store.
+ * @param {str} key - The key parameter is a string that represents the key of the data you want to
+ * delete from the IndexedDB object store.
+ * @returns The `deleteData` function returns a Promise that resolves to an object with the following
+ * properties:
+ */
 	public async deleteData(key: str): Promise<any> {
 		const objectStore = this.getObjectStore('readwrite');
 		if (objectStore) {
@@ -55,6 +64,18 @@ export default class IndexedDB {
 		}
 	}
 
+	/**
+ * The function creates data in an IndexedDB object store and returns a promise with a success or error
+ * message.
+ * @param {unknown} data - The `data` parameter is of type `unknown`, which means it can be any type of
+ * data. It represents the data that you want to add to the IndexedDB object store.
+ * @returns The `createData` function returns a Promise that resolves to an object with the following
+ * properties:
+ * - `status`: A boolean indicating the status of the operation (true for success, false for failure).
+ * - `Code`: A status code indicating the result of the operation.
+ * - `message`: A message describing the result of the operation.
+ * - `StorageName`: The name of the storage mechanism being used
+ */
 	public async createData(data: unknown): Promise<any> {
 		const objectStore = this.getObjectStore('readwrite');
 		if (objectStore) {
@@ -81,6 +102,15 @@ export default class IndexedDB {
 		}
 	}
 
+	/**
+ * The function `readData` reads data from an IndexedDB object store using a given key and returns a
+ * promise that resolves to the data or null if the object store is not available.
+ * @param {str} key - The key parameter is a string that represents the key of the data you want to
+ * read from the IndexedDB object store.
+ * @returns The function `readData` returns a Promise that resolves to an object with the following
+ * properties: `status`, `Code`, `message`, `StorageName`, and `data`. If the object store is not
+ * available, it returns `null`.
+ */
 	public async readData(key: str): Promise<any | null> {
 		const objectStore = this.getObjectStore('readonly');
 		if (objectStore) {
@@ -110,7 +140,22 @@ export default class IndexedDB {
 		return null;
 	}
 
-	public async updateData(key: str, newData: any): Promise<any> {
+	/**
+ * The function `updateData` updates data in an IndexedDB object store and returns a promise with a
+ * success or error message.
+ * @param {str} key - The key parameter is a string that represents the key of the data you want to
+ * update in the IndexedDB object store. It is used to identify the specific data item that needs to be
+ * updated.
+ * @param {any} newData - The `newData` parameter is the updated data that you want to store in the
+ * IndexedDB. It can be of any type, such as an object, array, or primitive value.
+ * @returns The `updateData` function returns a Promise that resolves to an object with the following
+ * properties:
+ * - `status`: a boolean indicating whether the data was updated successfully or not
+ * - `Code`: a status code indicating the result of the update operation
+ * - `message`: a message describing the result of the update operation
+ * - `StorageName`: a string indicating the name of the storage (in this
+ */
+	public async updateData(key: str, newData: unknown): Promise<any> {
 		const objectStore = this.getObjectStore('readwrite');
 		if (objectStore) {
 			return new Promise((resolve, reject) => {
