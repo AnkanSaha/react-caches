@@ -35,7 +35,7 @@ To use the cache storage features, import the CacheStorage Related Functions fro
 ```js
 import { CacheStorage } from 'react-caches'; // Import Main CacheStorage Object
 
-const {receiveCache, saveCacheData, deleteCache} = CacheStorage; // Import all CacheStorage functions
+const {receiveCache, saveCacheData, deleteCache, updateCache, clearCache} = CacheStorage; // Import all CacheStorage functions
 
 const Data = await receiveCache('DatabaseName', 'Searchkey'); // Receive Cache Data from Cache Storage by Database Name and Search Key
 
@@ -46,4 +46,44 @@ const Response = await deleteCache('DatabaseName', 'Searchkey'); // Delete Cache
 const Response = await updateCache('DatabaseName', 'Searchkey', Data); // Update Cache Data in Cache Storage by Database Name and Search Key
 
 const Response = await clearCache('DatabaseName'); // Clear Cache Data from Cache Storage by Database Name
+```
+
+# Local Storage
+
+To use the local storage features, import the Local Storage Related Functions from the package:
+
+```js
+import { LocalStorage } from 'react-caches'; // Import Main LocalStorage Object
+
+const {getLocalStorageData, saveLocalStorageData, removeLocalStorageData, updateLocalStorageData, clearLocalStorageData} = LocalStorage; // Import all LocalStorage functions
+
+const Data = getLocalStorageData('Searchkey'); // Get Local Storage Data from Local Storage by Search Key
+
+const Response = saveLocalStorageData('Searchkey', Data); // Save Local Storage Data to Local Storage by Search Key
+
+const Response = removeLocalStorageData('Searchkey'); // Remove Local Storage Data from Local Storage by Search Key
+
+const Response = updateLocalStorageData('Searchkey', Data); // Update Local Storage Data in Local Storage by Search Key
+
+const Response = clearLocalStorageData(); // Clear Local Storage Data from Local Storage
+```
+
+# Session Storage
+
+To use the session storage features, import the Session Storage Related Functions from the package:
+
+```js
+import { SessionStorage } from 'react-caches'; // Import Main SessionStorage Object
+
+const {getSessionData, saveSessionData, removeSessionData, updateSessionData, clearSessionData} = SessionStorage; // Import all SessionStorage functions
+
+const Data = getSessionData('Searchkey'); // Get Session Storage Data from Session Storage by Search Key
+
+const Response = saveSessionData('Searchkey', Data); // Save Session Storage Data to Session Storage by Search Key
+
+const Response = removeSessionData('Searchkey'); // Remove Session Storage Data from Session Storage by Search Key
+
+const Response = updateSessionData('Searchkey', Data); // Update Session Storage Data in Session Storage by Search Key
+
+const Response = clearSessionData(); // Clear Session Storage Data from Session Storage
 ```

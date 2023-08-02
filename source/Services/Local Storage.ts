@@ -28,7 +28,7 @@ type ReturnType = {
 	Code: int;
 	message: str;
 	StorageName: str;
-	Localdata: unknown;
+	data: unknown;
 };
 
 /**
@@ -45,7 +45,7 @@ export function getLocalStorage(KeyName: str) {
 		Code: StatusCodes.OK,
 		message: 'Data retrieved successfully',
 		StorageName: 'Local Storage',
-		Localdata: JSON.parse(data ? data : 'null'),
+		data: JSON.parse(data ? data : 'null'),
 	};
 	return Response;
 }

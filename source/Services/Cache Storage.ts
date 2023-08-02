@@ -62,6 +62,15 @@ export const GetCache = async (Database: str, Searchkey: str) => {
 		const CacheDB = await caches.open(Database);
 		const CacheData: Cache = await CacheDB.match(Searchkey);
 		const CacheDataJSON: unknown = await CacheData?.json();
+		if (CacheDataJSON === undefined) {
+			return {
+				status: false,
+				Code: StatusCodes.NOT_FOUND,
+				message: 'Cache Not Found',
+				StorageName: 'Cache Storage',
+			};
+		}
+
 		return {
 			status: true,
 			Code: StatusCodes.OK,
