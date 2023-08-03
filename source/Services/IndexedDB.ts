@@ -78,10 +78,13 @@ export default class IndexedDB {
  */
 	public async createData(data: unknown): Promise<any> {
 		const objectStore = this.getObjectStore('readwrite');
+		console.log('objectStore', objectStore);
 		if (objectStore) {
+			console.log('Has objectStore');
 			return new Promise((resolve, reject) => {
 				const request = objectStore.add(data);
 				request.onsuccess = () => {
+					console.log('request.onsuccess', 'added data successfully');
 					resolve({
 						status: true,
 						Code: StatusCodes.CREATED,
@@ -185,6 +188,7 @@ export default class IndexedDB {
 		const request = indexedDB.open(this.databaseName, this.dbVersion);
 
 		request.onsuccess = (event: Event) => {
+			console.log('Database opened successfully');
 			this.db = (event.target as IDBOpenDBRequest).result;
 		};
 
@@ -200,6 +204,7 @@ export default class IndexedDB {
 		}
 
 		const transaction = this.db.transaction([this.objectStoreName], mode);
+		console.log('transactionEvent', transaction);
 		return transaction.objectStore(this.objectStoreName);
 	}
 }
