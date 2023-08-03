@@ -35,17 +35,19 @@ To use the cache storage features, import the CacheStorage Related Functions fro
 ```js
 import { CacheStorage } from 'react-caches'; // Import Main CacheStorage Object
 
+const CacheStorage = new CacheStorage('DatabaseName'); // Create a new CacheStorage Object
+
 const {receiveCache, saveCacheData, deleteCache, updateCache, clearCache} = CacheStorage; // Import all CacheStorage functions
 
-const Data = await receiveCache('DatabaseName', 'Searchkey'); // Receive Cache Data from Cache Storage by Database Name and Search Key
+const Data = await receiveCache('Searchkey'); // Receive Cache Data from Cache Storage by Database Name and Search Key
 
-const Response = await saveCacheData('DatabaseName', 'Searchkey', Data); // Save Cache Data to Cache Storage by Database Name and Search Key
+const Response = await saveCacheData('Searchkey', Data); // Save Cache Data to Cache Storage by Database Name and Search Key
 
-const Response = await deleteCache('DatabaseName', 'Searchkey'); // Delete Cache Data from Cache Storage by Database Name and Search Key
+const Response = await deleteCache('Searchkey'); // Delete Cache Data from Cache Storage by Database Name and Search Key
 
-const Response = await updateCache('DatabaseName', 'Searchkey', Data); // Update Cache Data in Cache Storage by Database Name and Search Key
+const Response = await updateCache('Searchkey', Data); // Update Cache Data in Cache Storage by Database Name and Search Key
 
-const Response = await clearCache('DatabaseName'); // Clear Cache Data from Cache Storage by Database Name
+const Response = await clearCache(); // Clear Cache Data from Cache Storage by Database Name
 ```
 
 # Local Storage

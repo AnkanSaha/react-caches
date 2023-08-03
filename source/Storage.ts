@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 // Import All Cache Storage Functions
-import {GetCache, saveCache, DeleteCache, clearCache, updateCache} from './Services/Cache Storage'; // Import All Cache Storage Functions
+import Cache_Storage from './Services/Cache Storage'; // Import All Cache Storage Functions
 
 // Import All Local Storage Functions
 import {clearLocalStorage, getLocalStorage, removeLocalStorage, saveLocalStorage, updateLocalStorage} from './Services/Local Storage'; // Import All Local Storage Functions
@@ -12,25 +12,17 @@ import {clearSession, getSession, removeSession, saveSession, updateSession} fro
 // Import IndexedDB Functions
 import IndexedDB_Storage from './Services/IndexedDB'; // Import IndexedDB Class
 
-// Export Cache Storage Functions
-/* The code is exporting an object named `CacheStorage` which contains several functions related to
-cache storage. Each function is assigned a corresponding function from the `./Services/Cache
-Storage` module. Max Storage Size is 50MB. */
+/* The code is exporting two variables, `CacheStorage` and `IndexedDB`, which are assigned to the
+classes `Cache_Storage` and `IndexedDB_Storage` respectively. This allows other modules or files to
+import and use these classes for cache storage and IndexedDB operations. */
 
-export const CacheStorage = {
-	receiveCache: GetCache,
-	saveCacheData: saveCache,
-	deleteCache: DeleteCache,
-	clearCacheData: clearCache,
-	updateCacheData: updateCache,
-};
+export const CacheStorage = Cache_Storage; // Export Cache Storage Class
 
-// Export Local Storage Functions
-/* The code is exporting an object named `LocalStorage` which contains several functions related to
-local storage. Each function is assigned a corresponding function from the `./Services/Local
-Storage` module. This allows other parts of the code to access and use these functions by importing
-the `LocalStorage` object. Max Storage Size is 50MB. */
+export const IndexedDB = IndexedDB_Storage; // Export IndexedDB Class
 
+/* The code is exporting an object named `LocalStorage` with multiple properties. Each property
+represents a function from the `Local Storage` module. These functions are used to interact with the
+browser's local storage. */
 export const LocalStorage = {
 	saveLocalStorageData: saveLocalStorage,
 	getLocalStorageData: getLocalStorage,
@@ -39,11 +31,8 @@ export const LocalStorage = {
 	updateLocalStorageData: updateLocalStorage,
 };
 
-// Export Session Storage Functions
-/* The code is exporting an object named `SessionStorage` which contains several functions related to
-session storage. Each function is assigned a corresponding function from the `./Services/Session
-Storage` module. This allows other parts of the code to access and use these functions by importing
-the `SessionStorage` object. */
+/* The code is exporting an object named `SessionStorage` with multiple properties. Each property
+represents a function from the `Session Storage` module. */
 export const SessionStorage = {
 	saveSessionData: saveSession,
 	getSessionData: getSession,
@@ -51,5 +40,3 @@ export const SessionStorage = {
 	clearSessionData: clearSession,
 	updateSessionData: updateSession,
 };
-
-export const IndexedDB = IndexedDB_Storage; // Export IndexedDB Class
