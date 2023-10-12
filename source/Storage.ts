@@ -1,3 +1,7 @@
+
+/* eslint-disable @typescript-eslint/parameter-properties */
+/* eslint-disable no-mixed-spaces-and-tabs */
+
 /* eslint-disable @typescript-eslint/naming-convention */
 
 // Import All Cache Storage Functions
@@ -11,6 +15,12 @@ import {clearSession, getSession, removeSession, saveSession, updateSession} fro
 
 // Import IndexedDB Functions
 import IndexedDB_Storage from './Services/IndexedDB'; // Import IndexedDB Class
+
+// Import API functions from API.ts
+import {GetFetch, PostFetch, PutFetch, DeleteFetch} from './Services/API.config'; // Import API functions from API.ts
+
+// Crypto Functions
+import {reActUpdateDocumentTitle, decrypt, encrypt} from './Services/Crypto.config'; // Import Crypto Functions
 
 /* The code is exporting two variables, `CacheStorage` and `IndexedDB`, which are assigned to the
 classes `Cache_Storage` and `IndexedDB_Storage` respectively. This allows other modules or files to
@@ -40,3 +50,35 @@ export const SessionStorage = {
 	clearSessionData: clearSession,
 	updateSessionData: updateSession,
 };
+
+// React Encryption Class
+class ReactEncryption {
+	Key: string;
+	constructor(Key: string) {
+	  this.Key = Key;
+	}
+
+	public async Encrypt(Data: string): Promise<string> {
+	  // Encrypt data
+	  const encryptedData = await encrypt(Data, this.Key);
+	  return encryptedData;
+	}
+
+	public async Decrypt(Data: string): Promise<unknown> {
+	  // Encrypt data
+	  const decryptedData = await decrypt(Data, this.Key);
+	  return decryptedData;
+	}
+}
+
+// Export React Common Functions
+export const React = {
+	UpdateDocumentTitle: reActUpdateDocumentTitle,
+	ReactEncrypt: ReactEncryption,
+	Fetch: {
+	  Get: GetFetch,
+	  Post: PostFetch,
+	  Put: PutFetch,
+	  Delete: DeleteFetch,
+	},
+}; // End of React
