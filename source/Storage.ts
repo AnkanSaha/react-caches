@@ -65,11 +65,10 @@ class ReactEncryption {
 	  return encryptedData;
 	}
 
-	public async Decrypt(Data: string): Promise<unknown> {
+	public async Decrypt(Data: string): Promise<any> {
 	  // Encrypt data
 	  const decryptedData = await decrypt(Data, this.Key);
-	  const ReadyData: unknown = JSON.parse(decryptedData);
-	  return ReadyData;
+	  return decryptedData;
 	}
 }
 
