@@ -20,7 +20,7 @@ import IndexedDB_Storage from './Services/IndexedDB'; // Import IndexedDB Class
 import {GetFetch, PostFetch, PutFetch, DeleteFetch} from './Services/API.config'; // Import API functions from API.ts
 
 // Crypto Functions
-import {reActUpdateDocumentTitle, decrypt, encrypt} from './Services/Crypto.config'; // Import Crypto Functions
+import {reActUpdateDocumentTitle, decrypt, encrypt, decryptSync, encryptSync} from './Services/Crypto.config'; // Import Crypto Functions
 
 /* The code is exporting two variables, `CacheStorage` and `IndexedDB`, which are assigned to the
 classes `Cache_Storage` and `IndexedDB_Storage` respectively. This allows other modules or files to
@@ -58,6 +58,7 @@ class ReactEncryption {
 	  this.Key = Key;
 	}
 
+	// Encrypt Functions
 	public async Encrypt(Data: string): Promise<string> {
 	  // Encrypt data
 	  const ReadyData = JSON.stringify(Data);
@@ -65,10 +66,26 @@ class ReactEncryption {
 	  return encryptedData;
 	}
 
+	// Decrypt Function
 	public async Decrypt(Data: string): Promise<any> {
 	  // Encrypt data
 	  const decryptedData = await decrypt(Data, this.Key);
 	  return decryptedData;
+	}
+
+	// Sync Functions for Encryption
+	public EncryptSync(Data: string): string {
+		// Encrypt data
+		const ReadyData = JSON.stringify(Data);
+		const encryptedData = encryptSync(ReadyData, this.Key);
+		return encryptedData;
+	}
+
+	// Decrypt Function Sync
+	public DecryptSync(Data: string): any {
+		// Encrypt data
+		const decryptedData = decryptSync(Data, this.Key);
+		return decryptedData;
 	}
 }
 
