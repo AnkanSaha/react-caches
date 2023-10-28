@@ -1,5 +1,4 @@
 
-/* eslint-disable @typescript-eslint/parameter-properties */
 /* eslint-disable no-mixed-spaces-and-tabs */
 
 /* eslint-disable @typescript-eslint/naming-convention */
