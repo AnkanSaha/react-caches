@@ -7,7 +7,7 @@
 // This Call Function For Register API Base Domain
 
 // Import All API Functions
-import {GetFetch, DeleteFetch, PostFetch, PutFetch} from '../bin/API.config'; // Import All API Functions
+import {GetFetch, DeleteFetch, PostFetch, PutFetch} from '../Function/API.config'; // Import All API Functions
 
 // Custom Types
 type str = string;
