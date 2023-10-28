@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 // Crypto Functions
-import {decrypt, encrypt, decryptSync, encryptSync} from '../bin/Crypto.config'; // Import Crypto Functions
+import {decrypt, encrypt, decryptSync, encryptSync} from '../Function/Crypto.config'; // Import Crypto Functions
 
 // React Encryption Class
 export class ReactEncryption {
