@@ -8,7 +8,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 // import Status Codes
-import StatusCodes from '../Helper/StatusCodes'; // Status Codes
+import StatusCodes from '../../Helper/StatusCodes'; // Status Codes
 
 // .. Global Types
 type str = string;

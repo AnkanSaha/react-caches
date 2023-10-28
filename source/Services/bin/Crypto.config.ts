@@ -5,10 +5,6 @@ import CryptoJS from 'crypto-js';
 // Data Types
 type Str = string;
 
-export function reActUpdateDocumentTitle(title: Str): void {
-	document.title = title; // Update the document title
-} // Import CryptoJS
-
 /**
  * The function encrypts a given string using AES encryption algorithm and returns the encrypted data
  * as a promise.
