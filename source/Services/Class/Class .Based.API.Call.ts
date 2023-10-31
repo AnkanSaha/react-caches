@@ -80,7 +80,7 @@ export class RegisterAPIBaseDomain {
  * called with the `this.APIBaseDomain`, `Body`, and `this.Headers` as arguments.
  */
 	async Post(Path: str, Body: any) {
-		return PostFetch(`this.APIBaseDomain${Path}`, Body, this.Headers);
+		return PostFetch(`${this.APIBaseDomain}${Path}`, Body, this.Headers);
 	}
 
 	/**
