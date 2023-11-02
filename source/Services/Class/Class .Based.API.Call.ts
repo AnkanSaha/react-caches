@@ -65,7 +65,7 @@ export class RegisterAPIBaseDomain {
  * operation.
  */
 	async Get(Path: str) {
-		return GetFetch(`this.APIBaseDomain${Path}`, this.Headers);
+		return GetFetch(`${this.APIBaseDomain}${Path}`, this.Headers);
 	}
 
 	/**
