@@ -38,7 +38,7 @@ export class RegisterAPIBaseDomain {
  */
 	constructor({APIBaseDomain, PORT, Headers}: RegisterAPIBaseDomainInterface) {
 		this.APIBaseDomain = APIBaseDomain ?? `http://localhost:${PORT ?? 3000}`;
-		this.Headers = Headers;
+		this.Headers = Headers ?? undefined;
 	}
 
 	/**
