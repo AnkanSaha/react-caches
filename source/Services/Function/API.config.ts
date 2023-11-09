@@ -16,7 +16,7 @@ type Str = string;
  * value by
  * @returns a Promise that resolves to an unknown value.
  */
-export async function PostFetch(API: Str, Data: unknown, Headers = {'Content-Type': 'application/json'}): Promise<unknown> {
+export async function PostFetch(API: Str, Data: unknown, Headers = undefined): Promise<unknown> {
 	const Response = await fetch(API, {
 		method: 'POST',
 		headers: Headers,
@@ -40,7 +40,7 @@ export async function PostFetch(API: Str, Data: unknown, Headers = {'Content-Typ
  * request body will
  * @returns a Promise that resolves to an unknown value.
  */
-export async function GetFetch(API: Str, Headers = {'Content-Type': 'application/json'}): Promise<unknown> {
+export async function GetFetch(API: Str, Headers = undefined): Promise<unknown> {
 	const Response = await fetch(API, {
 		method: 'GET',
 		headers: Headers,
@@ -68,7 +68,7 @@ export async function GetFetch(API: Str, Headers = {'Content-Type': 'application
  * your
  * @returns a Promise that resolves to an unknown value.
  */
-export async function PutFetch(API: Str, Data: unknown, Headers = {'Content-Type': 'application/json'}): Promise<unknown> {
+export async function PutFetch(API: Str, Data: unknown, Headers = undefined): Promise<unknown> {
 	const Response = await fetch(API, {
 		method: 'PUT',
 		headers: Headers,
@@ -92,7 +92,7 @@ export async function PutFetch(API: Str, Data: unknown, Headers = {'Content-Type
  * which sets the content type of the request to JSON. However, you can pass a different set of headers
  * @returns a Promise that resolves to an unknown value.
  */
-export async function DeleteFetch(API: Str, Headers = {'Content-Type': 'application/json'}): Promise<unknown> {
+export async function DeleteFetch(API: Str, Headers = undefined): Promise<unknown> {
 	const Response = await fetch(API, {
 		method: 'DELETE',
 		headers: Headers,
