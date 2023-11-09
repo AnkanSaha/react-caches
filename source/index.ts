@@ -16,7 +16,7 @@ import {clearSession, getSession, removeSession, saveSession, updateSession} fro
 import IndexedDB_Storage from './Services/Class/Class.based.IndexedDB'; // Import IndexedDB Class
 
 // Import API functions from API.ts
-import {GetFetch, PostFetch, PutFetch, DeleteFetch} from './Services/Function/API.config'; // Import API functions from API.ts
+import {GetFetch, PostFetch, PutFetch, DeleteFetch, PatchFetch, FormDataPost, FormDataPut, FormDataPatch, FormDataDelete} from './Services/Function/API.config'; // Import API functions from API.ts
 import {RegisterAPIBaseDomain} from './Services/Class/Class .Based.API.Call'; // Import API functions from API.ts
 
 // Crypto Functions
@@ -60,6 +60,13 @@ export const React = {
 	  Post: PostFetch,
 	  Put: PutFetch,
 	  Delete: DeleteFetch,
+	  Patch: PatchFetch,
+	  FormDataActions: {
+			Post: FormDataPost,
+			Put: FormDataPut,
+			Patch: FormDataPatch,
+			Delete: FormDataDelete,
+	  },
 	},
 	ClassBasedFunctions: {
 		API: RegisterAPIBaseDomain,

@@ -16,7 +16,9 @@ type Str = string;
  * value by
  * @returns a Promise that resolves to an unknown value.
  */
-export async function PostFetch(API: Str, Data: unknown, Headers = undefined): Promise<unknown> {
+export async function PostFetch(API: Str, Data: unknown, Headers = {
+	'Content-Type': 'application/json',
+}): Promise<any> {
 	const Response = await fetch(API, {
 		method: 'POST',
 		headers: Headers,
@@ -40,7 +42,9 @@ export async function PostFetch(API: Str, Data: unknown, Headers = undefined): P
  * request body will
  * @returns a Promise that resolves to an unknown value.
  */
-export async function GetFetch(API: Str, Headers = undefined): Promise<unknown> {
+export async function GetFetch(API: Str, Headers = {
+	'Content-Type': 'application/json',
+}): Promise<any> {
 	const Response = await fetch(API, {
 		method: 'GET',
 		headers: Headers,
@@ -68,7 +72,9 @@ export async function GetFetch(API: Str, Headers = undefined): Promise<unknown> 
  * your
  * @returns a Promise that resolves to an unknown value.
  */
-export async function PutFetch(API: Str, Data: unknown, Headers = undefined): Promise<unknown> {
+export async function PutFetch(API: Str, Data: unknown, Headers = {
+	'Content-Type': 'application/json',
+}): Promise<any> {
 	const Response = await fetch(API, {
 		method: 'PUT',
 		headers: Headers,
@@ -92,10 +98,96 @@ export async function PutFetch(API: Str, Data: unknown, Headers = undefined): Pr
  * which sets the content type of the request to JSON. However, you can pass a different set of headers
  * @returns a Promise that resolves to an unknown value.
  */
-export async function DeleteFetch(API: Str, Headers = undefined): Promise<unknown> {
+export async function DeleteFetch(API: Str, Headers = {
+	'Content-Type': 'application/json',
+}): Promise<any> {
 	const Response = await fetch(API, {
 		method: 'DELETE',
 		headers: Headers,
+	}); // Fetch the API
+
+	const JSONResponse: unknown = await Response.json(); // Convert the response to JSON
+
+	// return the response
+	return JSONResponse;
+}
+
+// Function for PATCH requests
+/**
+ * The function `PatchFetch` is an asynchronous function that sends a PATCH request to an API with the
+ * provided data and headers, and returns the response as JSON.
+ * @param {str} API - The API parameter is a string that represents the URL of the API endpoint you
+ * want to send the PATCH request to. It should be a valid URL.
+ * @param {unknown} Data - The `Data` parameter is the data that you want to send in the PATCH request.
+ * It can be of any type, but it will be converted to a JSON string using `JSON.stringify()` before
+ * sending it in the request body.
+ * @param Headers - The `Headers` parameter is an optional object that specifies the headers to be
+ * included in the PATCH request. By default, it is set to `{ 'Content-Type': 'application/json' }`,
+ * which sets the content type of the request to JSON. However, you can override this default value by
+ * @returns a Promise that resolves to an unknown value.
+ */
+
+export async function PatchFetch(API: Str, Data: unknown, Headers = {
+	'Content-Type': 'application/json',
+}): Promise<any> {
+	const Response = await fetch(API, {
+		method: 'PATCH',
+		headers: Headers,
+		body: JSON.stringify(Data),
+	}); // Fetch the API
+
+	const JSONResponse: unknown = await Response.json(); // Convert the response to JSON
+
+	// return the response
+	return JSONResponse;
+}
+
+//  -- * Form Data * --  //
+
+// Post Function for FormData requests
+export async function FormDataPost(API: Str, Data: FormData): Promise<any> {
+	const Response = await fetch(API, {
+		method: 'POST',
+		body: Data,
+	}); // Fetch the API
+
+	const JSONResponse: unknown = await Response.json(); // Convert the response to JSON
+
+	// return the response
+	return JSONResponse;
+}
+
+// Put Function for FormData requests
+export async function FormDataPut(API: Str, Data: FormData): Promise<any> {
+	const Response = await fetch(API, {
+		method: 'PUT',
+		body: Data,
+	}); // Fetch the API
+
+	const JSONResponse: unknown = await Response.json(); // Convert the response to JSON
+
+	// return the response
+	return JSONResponse;
+}
+
+// Delete Function for FormData requests
+export async function FormDataDelete(API: Str, Data: FormData): Promise<any> {
+	const Response = await fetch(API, {
+		method: 'DELETE',
+		body: Data,
+	}); // Fetch the API
+
+	const JSONResponse: unknown = await Response.json(); // Convert the response to JSON
+
+	// return the response
+	return JSONResponse;
+}
+
+// PATCH Function for FormData requests
+export async function FormDataPatch(API: Str, Data: FormData): Promise<any> {
+	const Response = await fetch(API, {
+		method: 'PATCH',
+		body: Data,
 	}); // Fetch the API
 
 	const JSONResponse: unknown = await Response.json(); // Convert the response to JSON
