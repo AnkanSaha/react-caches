@@ -7,7 +7,7 @@
 // This Call Function For Register API Base Domain
 
 // Import All API Functions
-import {GetFetch, DeleteFetch, PostFetch, PutFetch} from '../Function/API.config'; // Import All API Functions
+import {GetFetch, DeleteFetch, PostFetch, PutFetch, PatchFetch, FormDataPost, FormDataPut, FormDataPatch, FormDataDelete} from '../Function/API.config'; // Import All API Functions
 
 // Custom Types
 type str = string;
@@ -93,7 +93,7 @@ export class RegisterAPIBaseDomain {
  * @returns The `Put` function is returning the result of the `PutFetch` function call.
  */
 	async Put(Path: str, Body: any) {
-		return PutFetch(`this.APIBaseDomain${Path}`, Body, this.Headers);
+		return PutFetch(`${this.APIBaseDomain}${Path}`, Body, this.Headers);
 	}
 
 	/**
@@ -104,6 +104,61 @@ export class RegisterAPIBaseDomain {
  * @returns The `Delete` function is returning the result of the `DeleteFetch` function.
  */
 	async Delete(Path: str) {
-		return DeleteFetch(`this.APIBaseDomain${Path}`, this.Headers);
+		return DeleteFetch(`${this.APIBaseDomain}${Path}`, this.Headers);
+	}
+
+	/**  The function `Patch` is an asynchronous function that sends a PATCH request to a specified path
+	 * using the `PatchFetch` function with the API base domain and headers.
+	 * @param {str} Path - The `Path` parameter is a string that represents the path of the resource that
+	 *  you want to patch. It is used to construct the URL for the patch request.
+	 * @returns The `Patch` function is returning the result of the `PatchFetch` function.
+	 */
+
+	async Patch(Path: str, Body: any) {
+		return PatchFetch(`${this.APIBaseDomain}${Path}`, Body, this.Headers);
+	}
+
+	/**  The function `FormDataPost` is an asynchronous function that sends a POST request to a specified path
+	 * using the `FormDataPost` function with the API base domain and headers.
+	 * @param {str} Path - The `Path` parameter is a string that represents the path of the resource that
+	 *  you want to post. It is used to construct the URL for the post request.
+	 * @returns The `FormDataPost` function is returning the result of the `FormDataPost` function.
+	 */
+
+	async FormDataPost(Path: str, Body: FormData) {
+		return FormDataPost(`${this.APIBaseDomain}${Path}`, Body);
+	}
+
+	/**  The function `FormDataPut` is an asynchronous function that sends a PUT request to a specified path
+	 * using the `FormDataPut` function with the API base domain and headers.
+	 * @param {str} Path - The `Path` parameter is a string that represents the path of the resource that
+	 *  you want to put. It is used to construct the URL for the put request.
+	 * @returns The `FormDataPut` function is returning the result of the `FormDataPut` function.
+	 */
+
+	async FormDataPut(Path: str, Body: FormData) {
+		return FormDataPut(`${this.APIBaseDomain}${Path}`, Body);
+	}
+
+	/**  The function `FormDataPatch` is an asynchronous function that sends a PATCH request to a specified path
+	 * using the `FormDataPatch` function with the API base domain and headers.
+	 * @param {str} Path - The `Path` parameter is a string that represents the path of the resource that
+	 *  you want to patch. It is used to construct the URL for the patch request.
+	 * @returns The `FormDataPatch` function is returning the result of the `FormDataPatch` function.
+	 */
+
+	async FormDataPatch(Path: str, Body: FormData) {
+		return FormDataPatch(`${this.APIBaseDomain}${Path}`, Body);
+	}
+
+	/**  The function `FormDataDelete` is an asynchronous function that sends a DELETE request to a specified path
+	 * using the `FormDataDelete` function with the API base domain and headers.
+	 * @param {str} Path - The `Path` parameter is a string that represents the path of the resource that
+	 *  you want to delete. It is used to construct the URL for the delete request.
+	 * @returns The `FormDataDelete` function is returning the result of the `FormDataDelete` function.
+	 */
+
+	async FormDataDelete(Path: str, Body: FormData) {
+		return FormDataDelete(`${this.APIBaseDomain}${Path}`, Body);
 	}
 }
