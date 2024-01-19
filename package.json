@@ -41,7 +41,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@types/crypto-js": "^4.1.2",
+    "@types/crypto-js": "^4.2.1",
     "@types/react": "^18.2.28",
     "@types/react-dom": "^18.2.13",
     "crypto-js": "^4.2.0",
@@ -50,7 +50,7 @@
   },
   "engines": {
     "node": ">=14.0.0",
-   "npm": ">=6.0.0"
+    "npm": ">=6.0.0"
   },
   "sponsor": {
     "url": "https://github.com/sponsors/AnkanSaha"
