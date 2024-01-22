@@ -8,13 +8,9 @@ License Badge
 # Features
 
 * Simplified access to local storage: Easily store and retrieve data in local storage using simple APIs.
-
 * Cache storage management: Manage cache storage with straightforward methods, allowing you to handle data caching effortlessly.
-
 * Integration with React: Designed to work smoothly with React applications, enabling you to enhance data handling on the client-side.
-
 * Lightweight: The package is lightweight, ensuring it doesn't introduce unnecessary overhead to your application.
-
 * Easy to use: The package offers intuitive APIs, making it user-friendly for developers of all levels.
 
 
