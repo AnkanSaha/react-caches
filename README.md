@@ -3,18 +3,14 @@
 License Badge
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-### React Caches is a lightweight and easy-to-use package that simplifies the management of local storage and cache storage in your React-based applications. With this package, you can easily access and manage data stored in local storage, cache storage, and other local storage used by JavaScript. It provides a convenient interface to store and retrieve data, making it seamless to work with client-side storage in your React projects.
+ React Caches is a lightweight and easy-to-use package that simplifies the management of local storage and cache storage in your React-based applications. With this package, you can easily access and manage data stored in local storage, cache storage, and other local storage used by JavaScript. It provides a convenient interface to store and retrieve data, making it seamless to work with client-side storage in your React projects.
 
 # Features
 
 * Simplified access to local storage: Easily store and retrieve data in local storage using simple APIs.
-
 * Cache storage management: Manage cache storage with straightforward methods, allowing you to handle data caching effortlessly.
-
 * Integration with React: Designed to work smoothly with React applications, enabling you to enhance data handling on the client-side.
-
 * Lightweight: The package is lightweight, ensuring it doesn't introduce unnecessary overhead to your application.
-
 * Easy to use: The package offers intuitive APIs, making it user-friendly for developers of all levels.
 
 
@@ -106,4 +102,18 @@ const Data = await readData('Searchkey'); // Read Data from IndexedDB by Search 
 const Response = await updateData('Searchkey', Data); // Update Data in IndexedDB by Search Key
 
 const Response = await deleteData('Searchkey'); // Delete Data from IndexedDB by Search Key
+```
+
+# Encryption - Decryption 
+### If You Want to Use Encrypt and Decrypt, You Need To Install in your Server Side
+```shell
+npm i outers@latest --save
+```
+```javascript
+const {React as Service} = require('react-caches'); // Import
+const Crypto = new Service.ClassBasedFunctions.ReactEncrypt("Key"); // Create Instance
+
+const EncryptedData = await Crypto.Encrypt("Data"); // Encrypt Data
+
+const DecryptedData = await Crypto.Decrypt("EncryptedData"); // Decrypt Data
 ```
