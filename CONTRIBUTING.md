@@ -1,4 +1,5 @@
 # Contributing to react-caches
+
 Welcome to react-caches! We appreciate your interest in contributing. By participating in this project, you agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Getting Started
@@ -17,3 +18,4 @@ Clone your forked repository to your local machine:
 
 ```bash
 git clone https://github.com/AnkanSaha/react-caches.git
+```
