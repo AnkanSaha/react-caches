@@ -1,5 +1,3 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
-
 /* eslint-disable @typescript-eslint/naming-convention */
 
 // Import All Cache Storage Functions
