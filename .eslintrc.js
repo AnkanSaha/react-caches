@@ -23,5 +23,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  rules: {},
+  rules: {
+    "no-mixed-spaces-and-tabs": 0,
+  }
 };
