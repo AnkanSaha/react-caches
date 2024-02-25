@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 // Import Status Codes
-import StatusCodes from "../../Helper/StatusCodes"; // Import Status Codes
+import StatusCodes from "../../Status Codes/StatusCodes"; // Import Status Codes
 
 // Global types
 type str = string;

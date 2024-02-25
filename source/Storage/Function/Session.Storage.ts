@@ -3,7 +3,7 @@
 type str = string;
 type int = number;
 
-import StatusCodes from "../../Helper/StatusCodes"; // Import Status Codes
+import StatusCodes from "../../Status Codes/StatusCodes"; // Import Status Codes
 
 // Global functions
 

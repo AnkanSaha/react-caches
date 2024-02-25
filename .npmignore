@@ -2,3 +2,8 @@ node_modules
 source
 .github
 .devcontainer
+.deepsource.toml
+.eslintrc.js
+.gitpod.yml
+docker-compose.yml
+tsconfig.json

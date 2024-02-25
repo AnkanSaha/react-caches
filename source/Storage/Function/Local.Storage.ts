@@ -4,7 +4,7 @@ type str = string;
 type int = number;
 
 // Import Status Codes
-import StatusCodes from "../../Helper/StatusCodes";
+import StatusCodes from "../../Status Codes/StatusCodes";
 
 /**
  * The function saves data to the local storage using a specified key name.
