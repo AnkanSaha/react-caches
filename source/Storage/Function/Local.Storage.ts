@@ -4,7 +4,7 @@ type str = string;
 type int = number;
 
 // Import Status Codes
-import StatusCodes from "../../Helper/StatusCodes";
+import StatusCodes from '../../Status Codes/StatusCodes';
 
 /**
  * The function saves data to the local storage using a specified key name.
@@ -14,21 +14,21 @@ import StatusCodes from "../../Helper/StatusCodes";
  * type of data.
  */
 export function saveLocalStorage(KeyName: str, data: unknown) {
-  localStorage.setItem(KeyName, JSON.stringify(data));
-  return {
-    status: true,
-    Code: StatusCodes.CREATED,
-    message: "Data saved successfully",
-    StorageName: "Local Storage",
-  };
+	localStorage.setItem(KeyName, JSON.stringify(data));
+	return {
+		status: true,
+		Code: StatusCodes.CREATED,
+		message: 'Data saved successfully',
+		StorageName: 'Local Storage',
+	};
 }
 
 type ReturnType = {
-  status: boolean;
-  Code: int;
-  message: str;
-  StorageName: str;
-  data: unknown;
+	status: boolean;
+	Code: int;
+	message: str;
+	StorageName: str;
+	data: unknown;
 };
 
 /**
@@ -39,15 +39,15 @@ type ReturnType = {
  * @returns an object of type ReturnType.
  */
 export function getLocalStorage(KeyName: str) {
-  const data = localStorage.getItem(KeyName);
-  const Response: ReturnType = {
-    status: true,
-    Code: StatusCodes.OK,
-    message: "Data retrieved successfully",
-    StorageName: "Local Storage",
-    data: JSON.parse(data ? data : "null"),
-  };
-  return Response;
+	const data = localStorage.getItem(KeyName);
+	const Response: ReturnType = {
+		status: true,
+		Code: StatusCodes.OK,
+		message: 'Data retrieved successfully',
+		StorageName: 'Local Storage',
+		data: JSON.parse(data ? data : 'null'),
+	};
+	return Response;
 }
 
 /**
@@ -60,13 +60,13 @@ export function getLocalStorage(KeyName: str) {
  * - StorageName: a string indicating the type of storage being used, in this case, "Local Storage"
  */
 export function removeLocalStorage(KeyName: str) {
-  localStorage.removeItem(KeyName);
-  return {
-    status: true,
-    Code: StatusCodes.ACCEPTED,
-    message: "Data removed successfully",
-    StorageName: "Local Storage",
-  };
+	localStorage.removeItem(KeyName);
+	return {
+		status: true,
+		Code: StatusCodes.ACCEPTED,
+		message: 'Data removed successfully',
+		StorageName: 'Local Storage',
+	};
 }
 
 /**
@@ -81,14 +81,14 @@ export function removeLocalStorage(KeyName: str) {
  * - StorageName: a string indicating the name of the storage (in this case, 'Local Storage')
  */
 export function updateLocalStorage(KeyName: str, data: unknown) {
-  localStorage.removeItem(KeyName);
-  localStorage.setItem(KeyName, JSON.stringify(data));
-  return {
-    status: true,
-    Code: StatusCodes.ACCEPTED,
-    message: "Data updated successfully",
-    StorageName: "Local Storage",
-  };
+	localStorage.removeItem(KeyName);
+	localStorage.setItem(KeyName, JSON.stringify(data));
+	return {
+		status: true,
+		Code: StatusCodes.ACCEPTED,
+		message: 'Data updated successfully',
+		StorageName: 'Local Storage',
+	};
 }
 
 /**
@@ -100,11 +100,11 @@ export function updateLocalStorage(KeyName: str, data: unknown) {
  * Storage")
  */
 export function clearLocalStorage() {
-  localStorage.clear();
-  return {
-    status: true,
-    Code: StatusCodes.ACCEPTED,
-    message: "Local Storage cleared successfully",
-    StorageName: "Local Storage",
-  };
+	localStorage.clear();
+	return {
+		status: true,
+		Code: StatusCodes.ACCEPTED,
+		message: 'Local Storage cleared successfully',
+		StorageName: 'Local Storage',
+	};
 }
