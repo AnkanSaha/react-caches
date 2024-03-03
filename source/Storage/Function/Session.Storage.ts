@@ -3,7 +3,7 @@
 type str = string;
 type int = number;
 
-import StatusCodes from '../../Status Codes/StatusCodes'; // Import Status Codes
+import StatusCodes from "../../Status Codes/StatusCodes"; // Import Status Codes
 
 // Global functions
 
@@ -22,21 +22,21 @@ import StatusCodes from '../../Status Codes/StatusCodes'; // Import Status Codes
  * Storage)
  */
 export function saveSession(KeyName: str, data: unknown) {
-	sessionStorage.setItem(KeyName, JSON.stringify(data));
-	return {
-		status: true,
-		message: 'Data saved successfully',
-		Code: StatusCodes.CREATED,
-		StorageName: 'Session Storage',
-	};
+  sessionStorage.setItem(KeyName, JSON.stringify(data));
+  return {
+    status: true,
+    message: "Data saved successfully",
+    Code: StatusCodes.CREATED,
+    StorageName: "Session Storage",
+  };
 }
 
 type ReturnType = {
-	status: boolean;
-	Code: int;
-	message: str;
-	StorageName: str;
-	data: unknown;
+  status: boolean;
+  Code: int;
+  message: str;
+  StorageName: str;
+  data: unknown;
 };
 
 /**
@@ -47,15 +47,15 @@ type ReturnType = {
  * @returns an object of type `ReturnType`.
  */
 export function getSession(KeyName: str) {
-	const data = sessionStorage.getItem(KeyName);
-	const Response: ReturnType = {
-		status: true,
-		message: 'Data retrieved successfully',
-		Code: StatusCodes.OK,
-		StorageName: 'Session Storage',
-		data: JSON.parse(data ? data : 'null'),
-	};
-	return Response;
+  const data = sessionStorage.getItem(KeyName);
+  const Response: ReturnType = {
+    status: true,
+    message: "Data retrieved successfully",
+    Code: StatusCodes.OK,
+    StorageName: "Session Storage",
+    data: JSON.parse(data ? data : "null"),
+  };
+  return Response;
 }
 
 /**
@@ -70,13 +70,13 @@ export function getSession(KeyName: str) {
  * - StorageName: a string indicating the type of storage being used (Session Storage)
  */
 export function removeSession(KeyName: str) {
-	sessionStorage.removeItem(KeyName);
-	return {
-		status: true,
-		message: 'Data removed successfully',
-		Code: StatusCodes.ACCEPTED,
-		StorageName: 'Session Storage',
-	};
+  sessionStorage.removeItem(KeyName);
+  return {
+    status: true,
+    message: "Data removed successfully",
+    Code: StatusCodes.ACCEPTED,
+    StorageName: "Session Storage",
+  };
 }
 
 /**
@@ -95,13 +95,13 @@ export function removeSession(KeyName: str) {
  * 'Session Storage')
  */
 export function updateSession(KeyName: str, data: unknown) {
-	sessionStorage.setItem(KeyName, JSON.stringify(data));
-	return {
-		status: true,
-		message: 'Data updated successfully',
-		Code: StatusCodes.ACCEPTED,
-		StorageName: 'Session Storage',
-	};
+  sessionStorage.setItem(KeyName, JSON.stringify(data));
+  return {
+    status: true,
+    message: "Data updated successfully",
+    Code: StatusCodes.ACCEPTED,
+    StorageName: "Session Storage",
+  };
 }
 
 /**
@@ -109,11 +109,11 @@ export function updateSession(KeyName: str, data: unknown) {
  * @returns An object is being returned with the following properties:
  */
 export function clearSession() {
-	sessionStorage.clear();
-	return {
-		status: true,
-		message: 'Session Storage cleared successfully',
-		Code: StatusCodes.ACCEPTED,
-		StorageName: 'Session Storage',
-	};
+  sessionStorage.clear();
+  return {
+    status: true,
+    message: "Session Storage cleared successfully",
+    Code: StatusCodes.ACCEPTED,
+    StorageName: "Session Storage",
+  };
 }
