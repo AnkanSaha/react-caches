@@ -7,3 +7,6 @@ source
 .gitpod.yml
 docker-compose.yml
 tsconfig.json
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LEARN.md
