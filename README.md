@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![CodeQL](https://github.com/AnkanSaha/react-caches/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/AnkanSaha/react-caches/actions/workflows/github-code-scanning/codeql)
+[![Publish To NPM Package Registry](https://github.com/AnkanSaha/react-caches/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/AnkanSaha/react-caches/actions/workflows/npm-publish.yml)
 
 React Caches is a lightweight and easy-to-use package that simplifies the management of local storage and cache storage in your React-based applications. With this package, you can easily access and manage data stored in local storage, cache storage, and other local storage used by JavaScript. It provides a convenient interface to store and retrieve data, making it seamless to work with client-side storage in your React projects.
 
