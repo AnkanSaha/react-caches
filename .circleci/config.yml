@@ -2,6 +2,7 @@ version: 2.1 # use 2.1 to enable the use of orbs
 
 jobs: # define the jobs that will be executed
   Build: # define the build job
+    name: Build Package # name of the job
     docker: # use the docker executor
       - image: node:latest # use the latest node image
 
@@ -30,6 +31,7 @@ jobs: # define the jobs that will be executed
             - LICENSE
 
   Publish_To_NPM:
+    name: Publish to NPM Registry
     docker:
       - image: node:latest
 
@@ -47,6 +49,7 @@ jobs: # define the jobs that will be executed
           command: npm publish --registry https://registry.npmjs.org --access public
 
   Publish_To_Github:
+    name: Publish to Github Package Registry
     docker:
       - image: node:latest
 
