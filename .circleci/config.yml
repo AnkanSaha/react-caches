@@ -46,7 +46,7 @@ jobs: # define the jobs that will be executed
           name: Publish to NPM Registry
           command: npm publish --registry https://registry.npmjs.org --access public
 
-  Publish_To_Github_Package_Registry:
+  Publish_To_Github:
     docker:
       - image: node:latest
 
@@ -79,6 +79,7 @@ workflows:
             only:
               - main
       - Publish_To_NPM:
+          name: Publish to NPM Registry
           requires:
             - Build Package
           filters:
@@ -86,8 +87,9 @@ workflows:
               only:
                 - main
       - Publish_To_Github:
+          name: Publish to Github Package Registry
           requires:
-            - Publish_To_NPM
+            - Publish to NPM Registry
           filters:
             branches:
               only:
