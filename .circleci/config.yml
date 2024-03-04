@@ -73,7 +73,7 @@ workflows:
       - Publish_To_NPM:
           name: Publish to NPM Registry
           requires:
-            - Build
+            - Build Package
           filters:
             branches:
               only:
