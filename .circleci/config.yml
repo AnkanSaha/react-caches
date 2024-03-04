@@ -42,7 +42,7 @@ jobs:
       
       - run:
           name: Publish to Github Package Registry
-          command: npm publish --registry=https://npm.pkg.github.com --scope=@${GITHUB_REPO_NAME} --access public
+          command: npm publish --registry=https://npm.pkg.github.com --scope=@${GITHUB_USER_NAME} --access public
 
 workflows:
   version: 2
