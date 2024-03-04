@@ -1,29 +1,25 @@
-version: 2.1 # use 2.1 to enable the use of orbs
+version: 2.1
 
-jobs: # define the jobs that will be executed
-  Build: # define the build job
-    name: Build Package # name of the job
-    docker: # use the docker executor
-      - image: node:latest # use the latest node image
+jobs:
+  Build:
+    name: Build Package
+    docker:
+      - image: node:latest
 
-    steps: # define the steps that will be executed
-      - checkout # checkout the code from the repository
-
+    steps:
+      - checkout
       - run:
           name: Install Dependencies
           command: yarn install
-
       - run:
           name: Run Tests
           command: yarn test
-
       - run:
           name: Build Package
           command: yarn run build
-
-      - persist_to_workspace: # persist the workspace to the job
-          root: . # root of the workspace
-          paths: # list of paths to persist
+      - persist_to_workspace:
+          root: .
+          paths:
             - lib
             - package.json
             - yarn.lock
@@ -36,14 +32,12 @@ jobs: # define the jobs that will be executed
       - image: node:latest
 
     steps:
-      - attach_workspace: # attach the workspace to the job
-          at: . # root of the workspace
-
+      - attach_workspace:
+          at: .
       - run:
           name: Set NPM Auth Token
           command: |
             echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > ~/.npmrc
-
       - run:
           name: Publish to NPM Registry
           command: npm publish --registry https://registry.npmjs.org --access public
@@ -54,46 +48,30 @@ jobs: # define the jobs that will be executed
       - image: node:latest
 
     steps:
-      - attach_workspace: # attach the workspace to the job
-          at: . # root of the workspace
-
+      - attach_workspace:
+          at: .
       - run:
           name: Set Github Auth Token
           command: |
             echo "//npm.pkg.github.com/:_authToken=${GITHUB_AUTH_TOKEN}" >> ~/.npmrc
-
       - run:
           name: Change the Package name in Package.json
           command: |
             apt-get update && apt-get install -y sed
             sed -i "2s/\"react-caches\"/\"@${GITHUB_USER_NAME}\/react-caches\"/" package.json
-
       - run:
           name: Publish to Github Package Registry
           command: npm publish --registry=https://npm.pkg.github.com --scope=@${GITHUB_USER_NAME} --access public
 
 workflows:
-  Registry_Publish: # define the workflow
+  version: 2
+  Registry_Publish:
     jobs:
-      - Build:
-        name: Build Package
-        filters:
-          branches:
-            only:
-              - main
+      - Build
       - Publish_To_NPM:
-          name: Publish to NPM Registry
           requires:
-            - Build Package
-          filters:
-            branches:
-              only:
-                - main
+            - Build
       - Publish_To_Github:
-          name: Publish to Github Package Registry
           requires:
-            - Publish to NPM Registry
-          filters:
-            branches:
-              only:
-                - main
+            - Build
+            - Publish_To_NPM
