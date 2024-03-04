@@ -13,6 +13,21 @@ jobs:
           command: yarn install
 
       - run:
+          name: Build Package
+          command: yarn run build
+
+  Publish_To_NPM:
+    docker:
+      - image: node:latest
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install Dependencies
+          command: yarn install
+
+      - run:
           name: Run Tests
           command: yarn test
 
@@ -26,30 +41,59 @@ jobs:
             echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > ~/.npmrc
 
       - run:
+          name: Publish to NPM Registry
+          command: npm publish --registry https://registry.npmjs.org --access public
+
+  Publish_To_Github_Package_Registry:
+    docker:
+      - image: node:latest
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install Dependencies
+          command: yarn install
+
+      - run:
+          name: Run Tests
+          command: yarn test
+
+      - run:
+          name: Build Package
+          command: yarn run build
+
+      - run:
           name: Set Github Auth Token
           command: |
             echo "//npm.pkg.github.com/:_authToken=${GITHUB_AUTH_TOKEN}" >> ~/.npmrc
-
-      - run:
-          name: Publish to NPM Registry
-          command: npm publish --registry https://registry.npmjs.org --access public
 
       - run:
           name: Change the Package name in Package.json
           command: |
             apt-get update && apt-get install -y sed
             sed -i "2s/\"react-caches\"/\"@${GITHUB_USER_NAME}\/react-caches\"/" package.json
-      
+
       - run:
           name: Publish to Github Package Registry
           command: npm publish --registry=https://npm.pkg.github.com --scope=@${GITHUB_USER_NAME} --access public
 
 workflows:
-  version: 2
   Registry_Publish_Workflow:
     jobs:
       - build:
-          name: Publish To NPM  & Github Package Registry
+          name: Build Package
+      - Publish_To_NPM:
+          requires:
+            - Build Package
+          filters:
+            branches:
+              only:
+                - main
+      - Publish_To_Github_Package_Registry:
+          requires:
+            - Build Package
+            - Publish_To_NPM
           filters:
             branches:
               only:
