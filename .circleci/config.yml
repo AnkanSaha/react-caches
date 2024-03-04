@@ -1,14 +1,14 @@
-version: 2.1
+version: 2.1 # use 2.1 to enable the use of orbs
 
-jobs:
-  Publish_To_NPM:
-    docker:
-      - image: node:latest
+jobs: # define the jobs that will be executed
+  Build: # define the build job
+    docker: # use the docker executor
+      - image: node:latest # use the latest node image
 
-    steps:
-      - checkout
+    steps: # define the steps that will be executed
+      - checkout # checkout the code from the repository
 
-      - run:
+      - run: 
           name: Install Dependencies
           command: yarn install
 
@@ -19,6 +19,23 @@ jobs:
       - run:
           name: Build Package
           command: yarn run build
+
+      - persist_to_workspace: # persist the workspace to the job
+          root: . # root of the workspace
+          paths: # list of paths to persist
+            - lib
+            - package.json
+            - yarn.lock
+            - README.md
+            - LICENSE
+
+  Publish_To_NPM:
+    docker:
+      - image: node:latest
+
+    steps:
+      - attach_workspace: # attach the workspace to the job
+          at: . # root of the workspace
 
       - run:
           name: Set NPM Auth Token
@@ -34,19 +51,8 @@ jobs:
       - image: node:latest
 
     steps:
-      - checkout
-
-      - run:
-          name: Install Dependencies
-          command: yarn install
-
-      - run:
-          name: Run Tests
-          command: yarn test
-
-      - run:
-          name: Build Package
-          command: yarn run build
+      - attach_workspace: # attach the workspace to the job
+          at: . # root of the workspace
 
       - run:
           name: Set Github Auth Token
@@ -64,14 +70,22 @@ jobs:
           command: npm publish --registry=https://npm.pkg.github.com --scope=@${GITHUB_USER_NAME} --access public
 
 workflows:
-  Registry_Publish_Workflow:
+  Registry_Publish: # define the workflow
     jobs:
+      - Build:
+        name: Build Package
+        filters:
+          branches:
+            only:
+              - main
       - Publish_To_NPM:
+          requires:
+            - Build Package
           filters:
             branches:
               only:
                 - main
-      - Publish_To_Github_Package_Registry:
+      - Publish_To_Github:
           requires:
             - Publish_To_NPM
           filters:
