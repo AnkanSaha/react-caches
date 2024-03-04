@@ -8,7 +8,7 @@ jobs: # define the jobs that will be executed
     steps: # define the steps that will be executed
       - checkout # checkout the code from the repository
 
-      - run: 
+      - run:
           name: Install Dependencies
           command: yarn install
 
