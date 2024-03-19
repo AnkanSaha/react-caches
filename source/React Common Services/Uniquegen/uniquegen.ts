@@ -39,7 +39,7 @@ import GenerateBooleanID from './Function/BooleanFunction';
  * Import the Generate Interface.
  * @internal
  */
-import { Generate } from './Interfaces/uniquegen.interface';
+import {Generate} from './Interfaces/uniquegen.interface';
 
 /**
  * This code block is creating an object named `Generate` that implements the `Generate` interface. It
@@ -50,45 +50,45 @@ import { Generate } from './Interfaces/uniquegen.interface';
  * export of the module.
  */
 const Generate: Generate = Object.freeze({
-    /**
+	/**
      * Generate a random number.
      * @function
      * @name Generate.randomNumber
      * @returns {number} The generated random number.
      */
-    randomNumber: GenerateNumberID,
+	randomNumber: GenerateNumberID,
 
-    /**
+	/**
      * Generate a random word.
      * @function
      * @name Generate.randomWord
      * @returns {string} The generated random word.
      */
-    randomWord: GenerateWordID,
+	randomWord: GenerateWordID,
 
-    /**
+	/**
      * Generate a random symbol.
      * @function
      * @name Generate.randomSymbol
      * @returns {string} The generated random symbol.
      */
-    randomSymbol: GenerateSymbolID,
+	randomSymbol: GenerateSymbolID,
 
-    /**
+	/**
      * Generate a random mixed string.
      * @function
      * @name Generate.randomMixed
      * @returns {string} The generated random mixed string.
      */
-    randomMixed: GenerateMixedID,
+	randomMixed: GenerateMixedID,
 
-    /**
+	/**
      * Generate a random boolean value.
      * @function
      * @name Generate.randomBoolean
      * @returns {boolean} The generated random boolean value.
      */
-    randomBoolean: GenerateBooleanID,
+	randomBoolean: GenerateBooleanID,
 });
 
 /**
