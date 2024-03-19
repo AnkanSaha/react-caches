@@ -39,7 +39,7 @@ import GenerateBooleanID from "./Function/BooleanFunction";
  * Import the Generate Interface.
  * @internal
  */
-import { Generate } from "./Interfaces/uniquegen.interface";
+import { type Generate } from "./Interfaces/uniquegen.interface";
 
 /**
  * This code block is creating an object named `Generate` that implements the `Generate` interface. It
@@ -49,7 +49,7 @@ import { Generate } from "./Interfaces/uniquegen.interface";
  * numbers, words, symbols, and mixed strings. The `Generate` object is then exported as the default
  * export of the module.
  */
-const Generate: Generate = Object.freeze({
+const generateRandom: Generate = Object.freeze({
   /**
    * Generate a random number.
    * @function
@@ -125,4 +125,4 @@ export const randomBoolean = GenerateBooleanID;
  * Export the default function.
  * @public
  */
-export default Generate;
+export default generateRandom;

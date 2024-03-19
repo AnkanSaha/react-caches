@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable new-cap */
 /* eslint-disable @typescript-eslint/naming-convention */
 
