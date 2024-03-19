@@ -1,5 +1,5 @@
 // Encrypt and Decrypt Imports
-import CryptoJS from 'crypto-js';
+import CryptoJS from "crypto-js";
 
 // Data Types
 type Str = string;
@@ -14,14 +14,14 @@ type Str = string;
  * @returns The encrypted data is being returned.
  */
 export async function encrypt(Data: Str, Key: Str): Promise<Str> {
-	// Check if User Provided Key or not
-	if (!Key) {
-		throw new Error('You must provide a key');
-	}
+  // Check if User Provided Key or not
+  if (!Key) {
+    throw new Error("You must provide a key");
+  }
 
-	// Encrypt data
-	const encryptedData = CryptoJS.AES.encrypt(Data, Key).toString(); // Encrypt data
-	return encryptedData; // Return encrypted data
+  // Encrypt data
+  const encryptedData = CryptoJS.AES.encrypt(Data, Key).toString(); // Encrypt data
+  return encryptedData; // Return encrypted data
 }
 
 /**
@@ -33,39 +33,39 @@ export async function encrypt(Data: Str, Key: Str): Promise<Str> {
  * @returns The decrypted data is being returned.
  */
 export async function decrypt(Data: Str, Key: Str): Promise<Str> {
-	// Check if User Provided Key or not
-	if (!Key) {
-		throw new Error('You must provide a key');
-	}
+  // Check if User Provided Key or not
+  if (!Key) {
+    throw new Error("You must provide a key");
+  }
 
-	// Decrypt data
-	const bytes = CryptoJS.AES.decrypt(Data, Key);
-	const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-	// Return decrypted data
-	return decryptedText; // Return decrypted data
+  // Decrypt data
+  const bytes = CryptoJS.AES.decrypt(Data, Key);
+  const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
+  // Return decrypted data
+  return decryptedText; // Return decrypted data
 }
 
 // Sync Functions
 export function encryptSync(Data: Str, Key: Str): Str {
-	// Check if User Provided Key or not
-	if (!Key) {
-		throw new Error('You must provide a key');
-	}
+  // Check if User Provided Key or not
+  if (!Key) {
+    throw new Error("You must provide a key");
+  }
 
-	// Encrypt data
-	const encryptedData = CryptoJS.AES.encrypt(Data, Key).toString(); // Encrypt data
-	return encryptedData; // Return encrypted data
+  // Encrypt data
+  const encryptedData = CryptoJS.AES.encrypt(Data, Key).toString(); // Encrypt data
+  return encryptedData; // Return encrypted data
 }
 
 export function decryptSync(Data: Str, Key: Str): Str {
-	// Check if User Provided Key or not
-	if (!Key) {
-		throw new Error('You must provide a key');
-	}
+  // Check if User Provided Key or not
+  if (!Key) {
+    throw new Error("You must provide a key");
+  }
 
-	// Decrypt data
-	const bytes = CryptoJS.AES.decrypt(Data, Key);
-	const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-	// Return decrypted data
-	return decryptedText; // Return decrypted data
+  // Decrypt data
+  const bytes = CryptoJS.AES.decrypt(Data, Key);
+  const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
+  // Return decrypted data
+  return decryptedText; // Return decrypted data
 }
