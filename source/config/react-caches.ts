@@ -3,6 +3,14 @@
 // Import All Cache Storage Functions
 import Cache_Storage from "../Storage/Class/Class.Based.Cache.Storage"; // Import All Cache Storage Functions
 
+// Import Random Generator
+import {
+  randomBoolean,
+  randomMixed,
+  randomNumber,
+  randomSymbol,
+  randomWord,
+} from "../React Common Services/Uniquegen/uniquegen"; // Import Random Generator
 // Import All Local Storage Functions
 import {
   clearLocalStorage,
@@ -83,6 +91,13 @@ export const React = {
       Patch: FormDataPatch,
       Delete: FormDataDelete,
     },
+  },
+  Random: {
+    Boolean: randomBoolean,
+    Number: randomNumber,
+    Word: randomWord,
+    Symbol: randomSymbol,
+    Mixed: randomMixed,
   },
   ClassBasedFunctions: {
     API: RegisterAPIBaseDomain,
