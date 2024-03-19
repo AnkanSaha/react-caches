@@ -9,37 +9,37 @@
  * Import the Random Number Generator Function.
  * @internal
  */
-import GenerateNumberID from "./Function/NumFunction";
+import GenerateNumberID from './Function/NumFunction';
 
 /**
  * Import the Random Word Generator Function.
  * @internal
  */
-import GenerateWordID from "./Function/WordFunction";
+import GenerateWordID from './Function/WordFunction';
 
 /**
  * Import the Random Symbol Generator Function.
  * @internal
  */
-import GenerateSymbolID from "./Function/SymbolFunction";
+import GenerateSymbolID from './Function/SymbolFunction';
 
 /**
  * Import the Random Mixed Generator Function.
  * @internal
  */
-import GenerateMixedID from "./Function/MixedFunction";
+import GenerateMixedID from './Function/MixedFunction';
 
 /**
  * Import the Random Boolean Generator Function.
  * @internal
  */
-import GenerateBooleanID from "./Function/BooleanFunction";
+import GenerateBooleanID from './Function/BooleanFunction';
 
 /**
  * Import the Generate Interface.
  * @internal
  */
-import { Generate } from "./Interfaces/uniquegen.interface";
+import {type Generate} from './Interfaces/uniquegen.interface';
 
 /**
  * This code block is creating an object named `Generate` that implements the `Generate` interface. It
@@ -49,46 +49,46 @@ import { Generate } from "./Interfaces/uniquegen.interface";
  * numbers, words, symbols, and mixed strings. The `Generate` object is then exported as the default
  * export of the module.
  */
-const Generate: Generate = Object.freeze({
-  /**
+const generateRandom: Generate = Object.freeze({
+	/**
    * Generate a random number.
    * @function
    * @name Generate.randomNumber
    * @returns {number} The generated random number.
    */
-  randomNumber: GenerateNumberID,
+	randomNumber: GenerateNumberID,
 
-  /**
+	/**
    * Generate a random word.
    * @function
    * @name Generate.randomWord
    * @returns {string} The generated random word.
    */
-  randomWord: GenerateWordID,
+	randomWord: GenerateWordID,
 
-  /**
+	/**
    * Generate a random symbol.
    * @function
    * @name Generate.randomSymbol
    * @returns {string} The generated random symbol.
    */
-  randomSymbol: GenerateSymbolID,
+	randomSymbol: GenerateSymbolID,
 
-  /**
+	/**
    * Generate a random mixed string.
    * @function
    * @name Generate.randomMixed
    * @returns {string} The generated random mixed string.
    */
-  randomMixed: GenerateMixedID,
+	randomMixed: GenerateMixedID,
 
-  /**
+	/**
    * Generate a random boolean value.
    * @function
    * @name Generate.randomBoolean
    * @returns {boolean} The generated random boolean value.
    */
-  randomBoolean: GenerateBooleanID,
+	randomBoolean: GenerateBooleanID,
 });
 
 /**
@@ -125,4 +125,4 @@ export const randomBoolean = GenerateBooleanID;
  * Export the default function.
  * @public
  */
-export default Generate;
+export default generateRandom;
