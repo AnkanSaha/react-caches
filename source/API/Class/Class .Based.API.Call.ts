@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable new-cap */
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -27,14 +24,14 @@ type int = number;
 type RegisterAPIBaseDomainInterface = {
   APIBaseDomain?: str;
   PORT?: int;
-  Headers?: any | undefined;
+  Headers?: Headers;
 };
 
 export class RegisterAPIBaseDomain {
   // Properties
   private readonly APIBaseDomain: str | undefined;
   private readonly PORT: int | undefined;
-  private readonly Headers: any | undefined;
+  private readonly Headers?: Headers;
 
   // Constructor
   /**
@@ -75,11 +72,15 @@ export class RegisterAPIBaseDomain {
    * The function `Get` makes an asynchronous HTTP GET request using the Fetch API.
    * @param {str} Path - The `Path` parameter is a string that represents the endpoint or path of the API
    * you want to call. It is used to construct the URL for the API request.
+   * @param {Headers} Headers - The `Headers` parameter is an optional object that specifies the headers
    * @returns the result of the `GetFetch` function, which is likely a promise or an asynchronous
    * operation.
    */
-  async Get(Path: str) {
-    return GetFetch(`${this.APIBaseDomain}${Path}`, this.Headers);
+  async Get(Path: str, CallHeaders?: Headers): Promise<any> {
+    return GetFetch(
+      `${this.APIBaseDomain}${Path}`,
+      CallHeaders ? CallHeaders : this.Headers,
+    );
   }
 
   /**
@@ -90,11 +91,16 @@ export class RegisterAPIBaseDomain {
    * @param {any} Body - The `Body` parameter is the data that you want to send in the request body. It
    * can be of any type, such as a string, object, or array. The data will be serialized and sent as the
    * request payload.
+   * @param {Headers} Headers - The `Headers` parameter is an optional object that specifies the headers
    * @returns The `Post` function is returning the result of the `PostFetch` function, which is being
    * called with the `this.APIBaseDomain`, `Body`, and `this.Headers` as arguments.
    */
-  async Post(Path: str, Body: any) {
-    return PostFetch(`${this.APIBaseDomain}${Path}`, Body, this.Headers);
+  async Post(Path: str, Body: any, CallHeaders?: Headers): Promise<any> {
+    return PostFetch(
+      `${this.APIBaseDomain}${Path}`,
+      Body,
+      CallHeaders ? CallHeaders : this.Headers,
+    );
   }
 
   /**
@@ -106,8 +112,12 @@ export class RegisterAPIBaseDomain {
    * can be of any type, such as a string, object, or array.
    * @returns The `Put` function is returning the result of the `PutFetch` function call.
    */
-  async Put(Path: str, Body: any) {
-    return PutFetch(`${this.APIBaseDomain}${Path}`, Body, this.Headers);
+  async Put(Path: str, Body: any, CallHeaders?: Headers): Promise<any> {
+    return PutFetch(
+      `${this.APIBaseDomain}${Path}`,
+      Body,
+      CallHeaders ? CallHeaders : this.Headers,
+    );
   }
 
   /**
@@ -117,8 +127,11 @@ export class RegisterAPIBaseDomain {
    * you want to delete. It is used to construct the URL for the delete request.
    * @returns The `Delete` function is returning the result of the `DeleteFetch` function.
    */
-  async Delete(Path: str) {
-    return DeleteFetch(`${this.APIBaseDomain}${Path}`, this.Headers);
+  async Delete(Path: str, CallHeaders?: Headers): Promise<any> {
+    return DeleteFetch(
+      `${this.APIBaseDomain}${Path}`,
+      CallHeaders ? CallHeaders : this.Headers,
+    );
   }
 
   /**  The function `Patch` is an asynchronous function that sends a PATCH request to a specified path
@@ -128,8 +141,12 @@ export class RegisterAPIBaseDomain {
    * @returns The `Patch` function is returning the result of the `PatchFetch` function.
    */
 
-  async Patch(Path: str, Body: any) {
-    return PatchFetch(`${this.APIBaseDomain}${Path}`, Body, this.Headers);
+  async Patch(Path: str, Body: any, CallHeaders?: Headers) {
+    return PatchFetch(
+      `${this.APIBaseDomain}${Path}`,
+      Body,
+      CallHeaders ? CallHeaders : this.Headers,
+    );
   }
 
   /**  The function `FormDataPost` is an asynchronous function that sends a POST request to a specified path

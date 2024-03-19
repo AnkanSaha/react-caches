@@ -19,9 +19,7 @@ type Str = string;
 export async function PostFetch(
   API: Str,
   Data: unknown,
-  Headers = {
-    "Content-Type": "application/json",
-  },
+  Headers?: Headers,
 ): Promise<any> {
   const Response = await fetch(API, {
     method: "POST",
@@ -46,12 +44,7 @@ export async function PostFetch(
  * request body will
  * @returns a Promise that resolves to an unknown value.
  */
-export async function GetFetch(
-  API: Str,
-  Headers = {
-    "Content-Type": "application/json",
-  },
-): Promise<any> {
+export async function GetFetch(API: Str, Headers?: Headers): Promise<any> {
   const Response = await fetch(API, {
     method: "GET",
     headers: Headers,
@@ -82,9 +75,7 @@ export async function GetFetch(
 export async function PutFetch(
   API: Str,
   Data: unknown,
-  Headers = {
-    "Content-Type": "application/json",
-  },
+  Headers?: Headers,
 ): Promise<any> {
   const Response = await fetch(API, {
     method: "PUT",
@@ -109,12 +100,7 @@ export async function PutFetch(
  * which sets the content type of the request to JSON. However, you can pass a different set of headers
  * @returns a Promise that resolves to an unknown value.
  */
-export async function DeleteFetch(
-  API: Str,
-  Headers = {
-    "Content-Type": "application/json",
-  },
-): Promise<any> {
+export async function DeleteFetch(API: Str, Headers?: Headers): Promise<any> {
   const Response = await fetch(API, {
     method: "DELETE",
     headers: Headers,
@@ -144,9 +130,7 @@ export async function DeleteFetch(
 export async function PatchFetch(
   API: Str,
   Data: unknown,
-  Headers = {
-    "Content-Type": "application/json",
-  },
+  Headers?: Headers,
 ): Promise<any> {
   const Response = await fetch(API, {
     method: "PATCH",
