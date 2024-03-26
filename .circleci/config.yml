@@ -21,21 +21,6 @@ jobs:
           command: |
             git push gitlab
 
-  Test_Package:
-    docker:
-      - image: node:latest
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: yarn install
-      - run:
-          name: Build Package
-          command: yarn run build
-      - run:
-          name: Test Package
-          command: yarn run test
-
   Publish_To_NPM:
     docker:
       - image: node:latest
@@ -98,34 +83,69 @@ jobs:
           name: Publish to Github Package Registry
           command: npm publish --registry=https://npm.pkg.github.com --scope=@${GITHUB_USER_NAME} --access public
 
+  Publish_To_Gitlab:
+   docker:
+      - image: node:latest
+   steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: Build Package
+          command: npm run build
+      - run:
+          name: Test Package
+          command: npm run test
+      - run:
+          name: Configure GitLab Credentials
+          command: |
+            git config --global credential.helper store
+            echo "https://oauth2:${GITLAB_PERMANENT_ACCESS_TOKEN}@gitlab.com" > ~/.git-credentials
+            git config --global user.email "${OWNER_EMAIL}"
+            git config --global user.name "${OWNER_NAME}"
+      - run:
+          name: Set Gitlab Auth Token
+          command: |
+             echo "@${GITLAB_USER_NAME}:registry=https://gitlab.com/api/v4/projects/${GITLAB_PROJECT_ID}/packages/npm/" > ~/.npmrc
+             echo "//gitlab.com/api/v4/projects/${GITLAB_PROJECT_ID}/packages/npm/:_authToken=${GITLAB_PERMANENT_ACCESS_TOKEN}" >> ~/.npmrc
+      - run:
+          name: Change the Package name in Package.json
+          command: |
+            apt-get update && apt-get install -y sed
+            sed -i "2s/\"react-caches\"/\"@${GITLAB_USER_NAME}\/react-caches\"/" package.json
+      - run:
+          name: Publish to Gitlab Registry
+          command: npm publish --registry https://gitlab.com/api/v4/projects/${GITLAB_PROJECT_ID}/packages/npm --access public
+
 workflows:
   version: 2
   Registry_Publish:
     jobs:
-      - Test_Package:
-          name: Build & Test Package
+      - Push_To_Gitlab:
+          name: Push to Gitlab
           filters:
             branches:
               only: main
       - Publish_To_NPM:
           name: Publish to NPM Registry
           requires:
-            - Build & Test Package
+            - Push to Gitlab
           filters:
             branches:
               only: main
       - Publish_To_Github:
           name: Publish to Github Registry
           requires:
-            - Build & Test Package
+            - Publish to NPM Registry
           filters:
             branches:
               only: main
-      - Push_To_Gitlab:
-          name: Push to Gitlab
+      - Publish_To_Gitlab:
+          name: Publish to Gitlab Registry
           requires:
+            - Push to Gitlab
             - Publish to Github Registry
-            - Publish to NPM Registry
           filters:
             branches:
               only: main
