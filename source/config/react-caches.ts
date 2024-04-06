@@ -48,6 +48,7 @@ import { RegisterAPIBaseDomain } from "../API/Class/Class .Based.API.Call"; // I
 // Crypto Functions
 import { reActUpdateDocumentTitle } from "../React Common Services/Update.Document.Title"; // Import Crypto Functions
 import { ReactEncryption } from "../Encryption (Outers Service)/Class/Class.Based.Encryption.Call"; // Import Crypto Functions
+import isDeviceMobileOrDesktop from "../React Common Services/is.Device.Mobile.Desktop";
 
 /* The code is exporting two variables, `CacheStorage` and `IndexedDB`, which are assigned to the
 classes `Cache_Storage` and `IndexedDB_Storage` respectively. This allows other modules or files to
@@ -103,4 +104,5 @@ export const React = {
     API: RegisterAPIBaseDomain,
     ReactEncrypt: ReactEncryption,
   },
+  isDeviceMobileOrDesktop,
 }; // End of React
