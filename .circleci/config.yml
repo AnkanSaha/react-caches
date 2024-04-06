@@ -90,13 +90,13 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: npm install
+          command: yarn install
       - run:
           name: Build Package
-          command: npm run build
+          command: yarn run build
       - run:
           name: Test Package
-          command: npm run test
+          command: yarn run test
       - run:
           name: Configure GitLab Credentials
           command: |
