@@ -3,7 +3,6 @@
 // Import All Cache Storage Functions
 import Cache_Storage from "../Storage/Class/Class.Based.Cache.Storage"; // Import All Cache Storage Functions
 
-
 // Import Random Generator
 import {
   randomBoolean,
@@ -105,5 +104,5 @@ export const React = {
     API: RegisterAPIBaseDomain,
     ReactEncrypt: ReactEncryption,
   },
-  isDeviceMobileOrDesktop
+  isDeviceMobileOrDesktop,
 }; // End of React
