@@ -24,12 +24,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-vscode.azure-account",
-				"ms-vscode.azure-repos",
-				"Sharafdin.better-reactjs-code-snippet",
 				"streetsidesoftware.code-spell-checker",
 				"ms-vscode-remote.remote-containers",
-				"ms-azuretools.vscode-docker",
 				"dbaeumer.vscode-eslint",
 				"GitHub.codespaces",
 				"GitHub.copilot",
@@ -46,8 +42,6 @@
 				"ms-vscode.remote-explorer",
 				"ms-vscode.remote-repositories",
 				"bradlc.vscode-tailwindcss",
-				"redhat.vscode-yaml",
-				"formulahendry.code-runner",
 				"TabNine.tabnine-vscode",
 				"pnp.polacode",
 				"Anan.jetbrains-darcula-theme"
@@ -55,7 +49,30 @@
 			"settings" :{
 				"editor.formatOnSave": true,
 				"editor.tabSize": 2,
-				"files.autoSave": "afterDelay"
+				"files.autoSave": "afterDelay",
+				"files.autoSaveDelay": 1000,
+				"editor.codeActionsOnSave": {
+					"source.fixAll.eslint": true,
+					"source.organizeImports": true
+				},
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"editor.suggestSelection": "first",
+				"editor.suggest.insertMode": "replace",
+				"editor.suggest.snippetsPreventQuickSuggestions": false,
+				"editor.suggest.showKeywords": true,
+				"editor.suggest.showSnippets": true,
+				"editor.suggest.showStatusBar": true,
+				"editor.suggest.showIcons": true,
+				"editor.suggest.showMethods": true,
+				"editor.suggest.showFunctions": true,
+				"editor.suggest.showVariables": true,
+				"editor.suggest.showProperties": true,
+				"editor.suggest.showClasses": true,
+				"editor.suggest.showModules": true,
+				"editor.suggest.showStructs": true,
+				"editor.suggest.showEnums": true,
+				"editor.suggest.showInterfaces": true,
+				"editor.suggest.showTypeParameters": true
 			}
 		}
 	},
