@@ -58,7 +58,7 @@ jobs:
       - name: Change package name in package.json
         run: |
           sudo apt-get update && sudo apt-get install -y sed
-          sed -i '2s/"react-caches"/"@${GITHUB_USER_NAME}\/react-caches"/' package.json
+          sed -i "2s/\"react-caches\"/\"@${GITHUB_USER_NAME}\/react-caches\"/" package.json
 
       - name: Publish to Github Package Registry
         run: npm publish --registry https://npm.pkg.github.com --scope=@${GITHUB_USER_NAME} --access public
