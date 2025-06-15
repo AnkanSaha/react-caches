@@ -1,0 +1,64 @@
+name: Registry Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish_to_npm:
+    name: Publish to NPM Registry
+    runs-on: ubuntu-latest
+    env:
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Build package
+        run: yarn run build
+
+      - name: Set NPM Auth Token
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > ~/.npmrc
+
+      - name: Publish to NPM
+        run: npm publish --registry https://registry.npmjs.org --access public
+
+  publish_to_github:
+    name: Publish to Github Registry
+    needs: publish_to_npm
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_AUTH_TOKEN: ${{ secrets.GIT_AUTH_TOKEN }}
+      GITHUB_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Build package
+        run: yarn run build
+
+      - name: Set Github Auth Token
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${GIT_AUTH_TOKEN}" >> ~/.npmrc
+
+      - name: Change package name in package.json
+        run: |
+          sudo apt-get update && sudo apt-get install -y sed
+          sed -i '2s/"react-caches"/"@${GIT_USER_NAME}\/react-caches"/' package.json
+
+      - name: Publish to Github Package Registry
+        run: npm publish --registry https://npm.pkg.github.com --scope=@${GIT_USER_NAME} --access public
